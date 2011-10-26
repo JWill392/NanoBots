@@ -1,0 +1,148 @@
+# Brody Holden and Jackson Williams, 2011
+# NanoBot Python Interface
+
+
+has_moved: -1 = DEMOVED, 1 = MOVED, 0 = WILLMOVE
+bot.action: MOVED
+BOT_MOVE_DISTANCE
+BOT_SEND_DISTANCE
+
+
+
+class CellEntity        # updated
+    __init__((x, y))
+    get_pos()
+        # Return x, y position
+    set_pos((x, y))
+
+
+class Food(CellEntity)  # updated
+    __init__((x, y), energy)
+    get_energy()
+    has_energy()
+        # Return boolean
+    sub_energy(amount)
+
+
+class Bot(CellEntity)
+    __init__((x, y), health, team)
+    is_alive()
+    get_health()
+    sub_health(amount)
+    add_health(amount)
+
+    get_move_state()
+    set_move_state(value)
+    get_action()
+    set_action(tuple)
+    get_team()
+    get_last_pos()
+    #get_inbox() # TODO
+
+
+class Grid
+    # Grid of lists
+    __init__ (width, height)
+    _team_bots = [[], []]
+    _is_in_bounds((x, y))
+    get_grid()
+    get_x()
+    get_y()
+
+    add_cell((x, y), ref)
+    rem_cell((x, y), ref)
+
+    get_neighborhood((x, y), radius)
+
+
+class World:
+    _fix_overfull_cell()
+    _is_staionary()
+
+
+    set_game_options(dictionary)
+        # Dictonary of game options. Unlisted options use defaults.
+
+    set_player_code(playerID, path)
+        # Set player code
+
+    prepare_world()
+        grid = Grid(x, y)
+        grid.place(TYPE, x, y)
+
+    is_game_complete()
+        # Return: True if game is complete, False if game is active.
+
+    get_game_state()
+        # Return game state i.e. what it looks like and contains.
+        # rename to dump_grid()?
+
+    get_game_results()
+        # Return:
+        # {
+        #   'winner':<winner-playerID OR MAX_TURNS_FLAG OR None>,
+        #   <playerID>:
+        #       {'units':<number of cells occupied>,
+        #        'energy':<sum of energy of units> }
+        # }
+        # Repeat for all playerIDs
+
+    propose_moves(playerID)
+        # User code proposes moves for all its bots.
+        # For bot in Player's Bot list:
+        #   grid.get_neighborhood(bot, VIEW_RADIUS)
+        #   use as env variables for player-code
+        #   Run player-code for bot
+        #   Save bots proposed actions
+        # For bot in same-players Bot list:
+        #   Apply move
+        #   Move/replace
+
+
+    apply_moves(playerID)
+        Would apply moves to Grid and resolve conflicts.
+
+class Player:
+
+class Brain:
+
+class Message:
+
+class GUI:
+    # Pretty shiney GUI
+
+
+class Log
+    # Log game state to file. Maybe use JSON format.
+
+
+def main():
+    # Collect game options from passed parameters or prompts.
+    World.set_game_options(Dictionary of game options)
+
+    playerID  = PlayerID(number of players)
+    currentID = playerID.first()
+
+    i = 0
+    for i in range(0, number of players):
+        # Collect path to player code from passed parameters or prompts.
+        World.set_player_code(currentID, path)
+        currentID = playerID.next()
+
+    World.prepare_world()
+    # GUI/Log starting state from World.get_world_state()
+
+    while True:
+        World.propose_moves(currentID)
+        World.apply_moves(currentID)
+
+        if World.is_game_complete():
+            break
+
+        # GUI/Log state from World.get_world_state()
+        currentID = PlayerID.next(currentID)
+
+    # GUI/Log final state from World.get_world_state()
+    # GUI/Log World.get_game_results()
+
+

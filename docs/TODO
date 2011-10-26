@@ -1,0 +1,11 @@
+World class
+Map class
+Log class
+Player class - Would do the sand boxing.
+
+Figure out docstring tool to document all interfaces for us.
+
+Research sandboxing in pypy.
+
+GUI - Real time or logged or both.
+
