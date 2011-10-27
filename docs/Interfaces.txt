@@ -37,7 +37,13 @@ class Bot(CellEntity)
     set_action(tuple)
     get_team()
     get_last_pos()
-    #get_inbox() # TODO
+    set_last_pos((x, y))
+    get_inbox()
+
+    add_to_next_turn_inbox(message)
+    clear_turn_data()
+
+
 
 
 class Grid
@@ -49,15 +55,17 @@ class Grid
     get_x()
     get_y()
 
-    add_cell((x, y), ref)
-    rem_cell((x, y), ref)
+    add_cell_entity((x, y), ref)
+    rem_cell_entity((x, y), ref)
 
     get_neighborhood((x, y), radius)
+    get_distance((x, y), (x, y))
 
 
 class World:
     _fix_overfull_cell()
     _is_staionary()
+    _is_valid_* (for each player action)
 
 
     set_game_options(dictionary)
@@ -70,10 +78,7 @@ class World:
         grid = Grid(x, y)
         grid.place(TYPE, x, y)
 
-    is_game_complete()
-        # Return: True if game is complete, False if game is active.
-
-    get_game_state()
+    #get_game_state()
         # Return game state i.e. what it looks like and contains.
         # rename to dump_grid()?
 
@@ -86,6 +91,8 @@ class World:
         #        'energy':<sum of energy of units> }
         # }
         # Repeat for all playerIDs
+
+        ######I edited up to here oct 26th########
 
     propose_moves(playerID)
         # User code proposes moves for all its bots.
