@@ -1,6 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-# By Jackson Williams and Brody Holden, 2011
+# By JWill and BDC, 2011
 
 
 import CellEntity
