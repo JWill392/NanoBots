@@ -20,7 +20,7 @@ a maxium number of turns has passed - this avoids a never ending game.
 
 ### License ###
 
-Copyright (C) Brody Holden and Jackson Williams, 2011  
+Copyright (C) JWill and BDC, 2011
 Licensed under the GNU GPL version 2 or up.
 
 
