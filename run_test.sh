@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-# Copyright (c) Brody Holden, 2011
+# Copyright (c) BDC, 2011
 # Runs all files matching "test_*.py".
 # Requires python (tested for 2.7.x) and pep8.
 
