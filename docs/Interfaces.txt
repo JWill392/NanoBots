@@ -1,4 +1,4 @@
-# Brody Holden and Jackson Williams, 2011
+# By JWill and BDC, 2011
 # NanoBot Python Interface
 
 
